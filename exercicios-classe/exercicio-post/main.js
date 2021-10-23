@@ -19,5 +19,6 @@ function inserirAutenticacao() {
             return response.status
         });
 
-
 }
+
+// n finalizado porque tem erro no cors 
