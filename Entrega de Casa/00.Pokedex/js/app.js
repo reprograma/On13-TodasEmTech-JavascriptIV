@@ -48,6 +48,11 @@ async function fetchPokemonsAsync() {
     // Tome como exemplo a função fetchTypesAsync() na linha 5
     // Dessa vez não vamos consumir da pokeapi, utilizem o arquivo json que eu montei
     // https://borgesdn.github.io/pokedex-source/pokedex.json
+    pokemonList = await fetch("https://borgesdn.github.io/pokedex-source/pokedex.json")
+        .then((response) => response.json())
+        .catch(error => {
+            console.error(error);
+        });
 }
 
 async function getPokemonAsync(id) {
