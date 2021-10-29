@@ -20,7 +20,7 @@ async function fetchTypesAsync() {
 
     // #endregion
 
-    // #region Utilizando then
+    // #region Utilizando thenw
     /*        
         Código onde cada then depende diretamente do outro. Mais código, menos legível.
         Em sala fizemos assim, com a diferença que aqui estamos adicionando os dados obtidos numa váriavel
@@ -48,20 +48,48 @@ async function fetchPokemonsAsync() {
     // Tome como exemplo a função fetchTypesAsync() na linha 5
     // Dessa vez não vamos consumir da pokeapi, utilizem o arquivo json que eu montei
     // https://borgesdn.github.io/pokedex-source/pokedex.json
+
+
+    const myHeaders = new Headers();
+    const myInit = {
+        method: 'GET',
+        headers: myHeaders,
+    }
+
+    pokemonList = await fetch("https://borgesdn.github.io/pokedex-source/pokedex.json")
+        .then((response) => response.json())
+        
+        .catch(error => {
+            console.error(error);
+        });
 }
 
 async function getPokemonAsync(id) {
     // Obter pokemon pelo id
     // Tome como exemplo a função fetchTypesAsync() na linha 5
     // https://pokeapi.co/api/v2/pokemon/(id recebido no parametro)
+
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+    const data = await response.json()
+
+    pokemonTypes = data.results.map(function (type) {
+        return type.name
+    });
+
+    console.log(id)
 }
 
-function filterPokemon(name, type) {
+
+
+function filterPokemon(name, type, id) {
     const filteredList = pokemonList.filter(pokemon => {
         const searchName = new RegExp(name, 'i');
         const checkName = searchName.test(pokemon.name);
         const checkType = type.length == 0 ? true : pokemon.type.includes(type);
-        return checkName && checkType;
+        const checkId = pokemon.id == id;
+        
+        return checkName && checkType && checkId;
     })
     return filteredList;
 }
+

@@ -66,6 +66,10 @@ $('#filter-name').on('keyup', e => {
   filter()
 })
 
+$('#filter-id').on('keyup', e => {
+  filter()
+})
+
 $('#filter-type').on('change', e => {
   e.preventDefault()
   filter()
@@ -88,8 +92,9 @@ function cleanForm() {
 function filter() {
   const name = $('#filter-name').val()
   const type = $('#filter-type').val()
+  const id = $('#filter-id').val()
 
-  const filteredList = filterPokemon(name, type);
+  const filteredList = filterPokemon(name, type, id);
   loadPokemonList(filteredList);
 
   return filteredList;
