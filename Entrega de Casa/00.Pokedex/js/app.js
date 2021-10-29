@@ -57,6 +57,15 @@ async function fetchPokemonsAsync() {
 
 }
 
+//2 forma
+//  async function fetchPokemonsAsync() {
+//      const response = await fetch ("https://borgesdn.github.io/pokedex-source/pokedex.json")
+//      const data = await response.json()
+     
+//      pokemonList = data
+//     };
+
+
 async function getPokemonAsync(id) {
     // Obter pokemon pelo id
     // Tome como exemplo a função fetchTypesAsync() na linha 5
@@ -66,6 +75,7 @@ async function getPokemonAsync(id) {
     const data = await response.json()
     return data
 }
+
 
 function filterPokemon(name, type) {
     const filteredList = pokemonList.filter(pokemon => {
