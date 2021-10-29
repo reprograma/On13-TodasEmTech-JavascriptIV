@@ -7,7 +7,7 @@ function trazerPersonagens () {
     const myInit = {
         method: 'GET',
         headers: myHeaders,
-    }
+    } 
 
     let headers;
     let json;
