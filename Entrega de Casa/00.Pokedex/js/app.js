@@ -1,5 +1,6 @@
 let pokemonList = [];
-let pokemonTypes = []
+let pokemonTypes = [];
+let pokemonId = [];
 
 // Método assíncrono para obter tipos via api. Utilize o sufixo Async no fim do nome do método é um bom padrão
 async function fetchTypesAsync() {
@@ -44,6 +45,11 @@ async function fetchTypesAsync() {
 }
 
 async function fetchPokemonsAsync() {
+    pokemonList = await fetch("https://borgesdn.github.io/pokedex-source/pokedex.json")
+        .then((response) => response.json())
+        .catch(error => {
+            console.log(error);
+        });
     // Obter pokemons e inserir o resultado na variavel pokemonList
     // Tome como exemplo a função fetchTypesAsync() na linha 5
     // Dessa vez não vamos consumir da pokeapi, utilizem o arquivo json que eu montei
@@ -51,6 +57,12 @@ async function fetchPokemonsAsync() {
 }
 
 async function getPokemonAsync(id) {
+    const response2 = await fetch ("https://pokeapi.co/api/v2/pokemon/(id")
+
+    const data2 = await response2.json()
+    pokemonTypes = data2.results.map(function(type) {
+        return type.id;
+    })
     // Obter pokemon pelo id
     // Tome como exemplo a função fetchTypesAsync() na linha 5
     // https://pokeapi.co/api/v2/pokemon/(id recebido no parametro)
