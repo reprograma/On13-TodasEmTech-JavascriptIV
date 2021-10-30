@@ -59,6 +59,16 @@ async function getPokemonAsync(id) {
     // Obter pokemon pelo id
     // Tome como exemplo a função fetchTypesAsync() na linha 5
     // https://pokeapi.co/api/v2/pokemon/(id recebido no parametro)
+    async function getPokemonAsync(id) {
+        const response = await fetch ('https://pokeapi.co/api/v2/pokemon/{}id')
+        const data = await response.json();
+
+        pokemonTypes = data.map((type) => {
+            return type.id;
+        });
+    
+    
+    }
 }
 
 function filterPokemon(name, type) {
