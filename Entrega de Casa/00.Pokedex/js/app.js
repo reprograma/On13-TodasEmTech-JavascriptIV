@@ -56,7 +56,7 @@ async function getPokemonAsync(id) {
     // https://pokeapi.co/api/v2/pokemon/(id recebido no parametro)
 }
 
-function filterPokemon(name, type) {
+function filterPokemon(name, type, id) {
     const filteredList = pokemonList.filter(pokemon => {
         const searchName = new RegExp(name, 'i');
         const checkName = searchName.test(pokemon.name);
