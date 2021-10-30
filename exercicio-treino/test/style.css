@@ -1,0 +1,54 @@
+*{
+  margin: 0%;
+  padding: 0%;
+  
+  
+}
+h1{
+ margin: 10px;
+ display: flex;
+}
+#divBusca{
+    background-color:#E0EEEE;
+    border:solid 2px #5F9EA0;
+    border-radius:10px;
+    width: 420px;
+    height:70px;
+    margin: 40px;
+  }
+  
+  #inputArtista{
+    float:left;
+    background-color:transparent;
+    padding-left:5px;
+    font-size:25px;
+    border:none;
+    height:60px;
+    width:204px;
+    margin: 5px 5px;
+    
+  }
+  
+  #btnBusca{
+    border:none;
+    float:left;
+    height:70px;
+    border-radius:0 8px 8px 0;
+    width: 128px;
+    font-weight:bold;
+    background:#5F9EA0;
+    font-size: 20px;
+  }
+  
+  #divBusca img{
+    float:left;
+   width: 15%;
+   padding: 1%;
+    
+  }
+  #artista,
+  #album,
+  #musica{
+    margin: 40px;
+  }
+ 
