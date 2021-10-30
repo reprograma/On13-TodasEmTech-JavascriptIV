@@ -13,3 +13,5 @@ O método `fetchPokemonsAsync()` deve obter pokemons de https://borgesdn.github.
 O método `getPokemonAsync(id)` deve obter pokemon de acordo com id passado no argumento em https://pokeapi.co/api/v2/pokemon/{id} e retornar o pokemon obtido.
 
 Em ambos os métodos deve ser utilizadas as duas maneiras de "esperar" funções assíncronas.
+
+
