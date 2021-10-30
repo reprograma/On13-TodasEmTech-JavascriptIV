@@ -14,7 +14,7 @@ async function fetchTypesAsync() {
     const response = await fetch("https://pokeapi.co/api/v2/type")
     const data = await response.json()
 
-    pokemonTypes = data.results.map(function (type) {
+    pokemonTypes = data.results.map(function(type) {
         return type.name
     });
 
@@ -32,7 +32,7 @@ async function fetchTypesAsync() {
     pokemonTypes = await fetch("https://pokeapi.co/api/v2/type")
         .then((response) => response.json())
         .then(data => {
-            return data.results.map(function (type) {
+            return data.results.map(function(type) {
                 return type.name
             });
         })
@@ -48,13 +48,77 @@ async function fetchPokemonsAsync() {
     // Tome como exemplo a função fetchTypesAsync() na linha 5
     // Dessa vez não vamos consumir da pokeapi, utilizem o arquivo json que eu montei
     // https://borgesdn.github.io/pokedex-source/pokedex.json
+    const myHeaders = new Headers();
+    const myInit = {
+        method: 'GET',
+        headers: myHeaders,
+    }
+    let pokemonList = [];
+
+    fetch("https://borgesdn.github.io/pokedex-source/pokedex.json", myInit)
+        .then((resposta) => {
+            pokemonList = resposta.json();
+        })
+        .then((resultado) => {
+            console.log(pokemonList);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 }
+
 
 async function getPokemonAsync(id) {
     // Obter pokemon pelo id
     // Tome como exemplo a função fetchTypesAsync() na linha 5
     // https://pokeapi.co/api/v2/pokemon/(id recebido no parametro)
+    const myHeaders = new Headers();
+    const myInit = {
+        method: 'GET',
+        headers: myHeaders,
+    }
+
+    let resultPokemon;
+    fetch("https://pokeapi.co/api/v2/pokemon", myInit)
+        .then((resposta) => {
+            resultPokemon = resposta.json();
+        })
+        .then((resultado) => {
+            console.log(resultPokemon);
+        })
+    const nomePoke = [];
+    const idPoke = [];
+
+    data.forEach(function(id) {
+        return resultPokemon.name;
+    })
 }
+/*
+ fetch("https://adventuretimeapi.herokuapp.com/people", myInit)
+        .then((resposta) => {
+            return resposta.json();
+        })
+        .then((data) => {
+            /* const nomes = data.map((personagem) => {
+                return personagem.name;
+            })
+            document.querySelector("#personagens").textContent = nomes; 
+
+            const nomes = [];
+            const url = [];
+
+            data.forEach(function (personagem) {
+                nomes.push(personagem.name);
+                url.push(personagem.url);
+            });
+
+            document.querySelector("#personagens").innerHTML = nomes;
+            document.getElementById("sites").innerHTML = `<span><a></a></span>`;
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+}*/
 
 function filterPokemon(name, type) {
     const filteredList = pokemonList.filter(pokemon => {
