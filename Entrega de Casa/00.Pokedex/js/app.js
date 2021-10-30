@@ -10,16 +10,15 @@ async function fetchTypesAsync() {
         Linha 14: Aguarda resposta do servidor
         Linha 15: Aguarda conversão da resposta do servidor (Os dados mesmo)
     */
-
+    
     const response = await fetch("https://pokeapi.co/api/v2/type")
     const data = await response.json()
-
+    
     pokemonTypes = data.results.map(function (type) {
         return type.name
     });
-
+    
     // #endregion
-
     // #region Utilizando then
     /*        
         Código onde cada then depende diretamente do outro. Mais código, menos legível.
@@ -28,6 +27,7 @@ async function fetchTypesAsync() {
         Linha 34: Aguarda dados já convertidos
         Linha 39: Mostra algum erro
     */
+    
 
     pokemonTypes = await fetch("https://pokeapi.co/api/v2/type")
         .then((response) => response.json())
@@ -35,11 +35,10 @@ async function fetchTypesAsync() {
             return data.results.map(function (type) {
                 return type.name
             });
-        })
+        })  
         .catch(error => {
             console.error(error);
         });
-
     // #endregion
 }
 
@@ -48,12 +47,19 @@ async function fetchPokemonsAsync() {
     // Tome como exemplo a função fetchTypesAsync() na linha 5
     // Dessa vez não vamos consumir da pokeapi, utilizem o arquivo json que eu montei
     // https://borgesdn.github.io/pokedex-source/pokedex.json
+
+    const response = await fetch("https://borgesdn.github.io/pokedex-source/pokedex.json")
+    const data = response.json
+    console.debug(data)
+    pokemonList = data
 }
 
 async function getPokemonAsync(id) {
     // Obter pokemon pelo id
     // Tome como exemplo a função fetchTypesAsync() na linha 5
     // https://pokeapi.co/api/v2/pokemon/(id recebido no parametro)
+
+
 }
 
 function filterPokemon(name, type) {
