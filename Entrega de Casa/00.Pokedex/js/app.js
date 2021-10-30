@@ -57,8 +57,6 @@ async function fetchPokemonsAsync() {
 
 }
 
-
-
 async function getPokemonAsync(id) {
     // Obter pokemon pelo id
     // Tome como exemplo a função fetchTypesAsync() na linha 5
