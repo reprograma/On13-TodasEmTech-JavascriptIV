@@ -1,5 +1,6 @@
 let pokemonList = [];
-let pokemonTypes = []
+let pokemonTypes = [];
+let pokemonId = [];
 
 // Método assíncrono para obter tipos via api. Utilize o sufixo Async no fim do nome do método é um bom padrão
 async function fetchTypesAsync() {
@@ -14,9 +15,15 @@ async function fetchTypesAsync() {
     const response = await fetch("https://pokeapi.co/api/v2/type")
     const data = await response.json()
 
-    pokemonTypes = data.results.map(function (type) {
+    pokemonTypes = data.results.map (function (type) {
         return type.name
     });
+
+    //MAP - Ele percorre todo o array, até o final da array, ou que coloque uma definição para parar.
+    //FOR - (PARA) - Para tal parametro faça isso. Ele faz uma varredura e quando acha o parâmetro pré estabelecido, ele para.
+    //FOR EACH - (ENQUANTO) - Enquanto o parametro for verdadeiro ele executa. Se nao for tenho que coloca algo que finalize console.log ou alert que finalize a resposta.
+    // SWITCH CASE - Executa a instrução ele executa até um que atenda e ele só finaliza com um break (para) ou default (erro).
+
 
     // #endregion
 
@@ -40,8 +47,10 @@ async function fetchTypesAsync() {
             console.error(error);
         });
 
+
     // #endregion
 }
+
 
 async function fetchPokemonsAsync() {
     pokemonList = await fetch("https://borgesdn.github.io/pokedex-source/pokedex.json")
@@ -50,6 +59,7 @@ async function fetchPokemonsAsync() {
         console.error(error);
     });
 }
+
 
 // Obter pokemons e inserir o resultado na variavel pokemonList
 // Tome como exemplo a função fetchTypesAsync() na linha 5
@@ -64,7 +74,7 @@ async function getPokemonAsync(id) {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     const data = await response.json();
 
-    pokemonTypes = data.map((type) => {
+    pokemonId = data.map((type) => {
         return type.id;
     });
 }
@@ -74,7 +84,9 @@ function filterPokemon(name, type, id) {
         const searchName = new RegExp(name, 'i');
         const checkName = searchName.test(pokemon.name);
         const checkType = type.length == 0 ? true : pokemon.type.includes(type);
-        return checkName && checkType;
+        const checkId = type.length == 0 ? true: pokemon.id;
+
+        return checkName && checkType && checkId;
     })
     return filteredList;
 }
